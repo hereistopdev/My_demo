@@ -9,12 +9,18 @@ async function generatePDF() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
+const cmd = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+const vite = spawn(cmd, ['run', 'dev'], {
+  cwd: path.resolve(__dirname, '..'),
+  stdio: 'pipe',
+  detached: true,
+});
   // Start the Vite development server
-  const vite = spawn("yarn", ["dev"], {
-    cwd: path.resolve(__dirname, ".."),
-    stdio: "pipe",
-    detached: true,
-  });
+  // const vite = spawn("yarn", ["dev"], {
+  //   cwd: path.resolve(__dirname, ".."),
+  //   stdio: "pipe",
+  //   detached: true,
+  // });
 
   // Wait for the server to start
   await new Promise<void>((resolve, reject) => {
