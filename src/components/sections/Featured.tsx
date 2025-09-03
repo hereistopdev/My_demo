@@ -1,11 +1,9 @@
 import {
-  Alert,
   Avatar,
   Box,
   Button,
   Card,
   Chip,
-  CircularProgress,
   ColorPaletteProp,
   Divider,
   Stack,
@@ -14,15 +12,13 @@ import {
 import React, { useEffect, useState } from "react";
 import { BsJournalCode } from "react-icons/bs";
 import { FaCodeBranch, FaGithub, FaStar } from "react-icons/fa";
-import getProjects from "@/utils/Api";
 import { Parallax } from "react-scroll-parallax";
 import { FiArrowRight, FiCode, FiExternalLink } from "react-icons/fi";
 import { RiBracesLine } from "react-icons/ri";
 import { Project, rank } from "@/assets/Projects";
 import { Link } from "react-router-dom";
-import { MdErrorOutline } from "react-icons/md";
 import { Default, Mobile, useMobileMode } from "@/components//Responsive";
-
+import { demo_projects } from "./Projects";
 /**
  * Beautifies a string
  * @param str The string to beautify
@@ -136,6 +132,7 @@ function ProjectCard({
           </Typography>
         </Stack>
         <Stack direction="row" gap={1}>
+          {project.source && 
           <Button
             variant="plain"
             component="a"
@@ -149,6 +146,7 @@ function ProjectCard({
           >
             Code
           </Button>
+          }
           {project.demo && (
             <Button
               component="a"
@@ -171,25 +169,9 @@ export default function Featured() {
   const mobile = useMobileMode();
 
   const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error>();
 
   useEffect(() => {
-    setLoading(true);
-    getProjects()
-      .then((data) => {
-        setProjects(data?.filter((project) => project.platform === "github") || []);
-      })
-      .catch(() => {
-        setError(
-          new Error(
-            "Failed to load featured projects, our API was unreachable."
-          )
-        );
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    setProjects(demo_projects);
   }, []);
 
   return (
@@ -306,74 +288,7 @@ export default function Featured() {
             },
           }}
         >
-          {error && !loading && (
-            <Alert
-              color="info"
-              startDecorator={<MdErrorOutline size="1.1rem" />}
-              endDecorator={
-                <Button
-                  size="sm"
-                  variant="plain"
-                  color="info"
-                  component="a"
-                  href="https://stats.uptimerobot.com/y3hLa5ZEeK"
-                  target="_blank"
-                >
-                  Check API status
-                </Button>
-              }
-              sx={{
-                gap: 0.5,
-                padding: ".3rem .3rem .3rem 1rem",
-                maxWidth: "100%",
-              }}
-            >
-              <span
-                style={{
-                  flex: "1 1 100%",
-                  minWidth: 0,
-                }}
-              >
-                <Typography
-                  textColor="inherit"
-                  fontSize="inherit"
-                  fontWeight="inherit"
-                  sx={{
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                    maxWidth: "100%",
-                  }}
-                >
-                  {error.message}
-                </Typography>
-              </span>
-            </Alert>
-          )}
-          {loading ? (
-            <Stack
-              direction={mobile ? "column" : "row"}
-              justifyContent="center"
-              alignItems="center"
-              gap={mobile ? 3 : 5}
-              padding={mobile ? "2rem 3rem" : 5}
-            >
-              <CircularProgress size="md" variant="plain" color="info" />
-              <Stack
-                direction="column"
-                gap={0.5}
-                maxWidth="25rem"
-                textAlign={mobile ? "center" : "left"}
-              >
-                <Typography level="h3" textColor="info.200">
-                  Loading projects
-                </Typography>
-                <Typography level="body2" textColor="info.300">
-                  Fetching the latest projects from GitHub, please wait.
-                </Typography>
-              </Stack>
-            </Stack>
-          ) : (
+          {
             <>
               {projects
                 .sort((a, b) => rank(b, projects) - rank(a, projects))
@@ -385,7 +300,7 @@ export default function Featured() {
                   </React.Fragment>
                 ))}
             </>
-          )}
+          }
         </Box>
         <Divider />
         <Card

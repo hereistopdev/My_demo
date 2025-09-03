@@ -29,13 +29,6 @@ export default function Header() {
     []
   );
 
-  const currentCompany = useMemo(
-    () =>
-      details.experience.find((experience) => experience.end === "Present") ||
-      undefined,
-    []
-  );
-
   return (
     <Stack
       gap="20px"
@@ -165,7 +158,7 @@ export default function Header() {
           textAlign: mobile ? "center" : "left",
         }}
       >
-        The name&apos;s{" "}
+        Here&apos;s{" "}
         <ATypography
           textColor="primary.plainColor"
           href={details.contact.linkedin}
@@ -177,19 +170,10 @@ export default function Header() {
           {details.name.nickname}
         </ATypography>
         . I&apos;m a{" "}
-        <Typography textColor="text.primary">Software engineer</Typography>
+        <Typography textColor="text.primary">Multilingual Software Engineer</Typography>
         &nbsp;
-        {currentCompany ? (
-          <>
-            {"at "}
-            <ATypography textColor="text.primary" href={currentCompany.url}>
-              {currentCompany.company}
-            </ATypography>
-            &nbsp;
-          </>
-        ) : null}
-        and an <Typography textColor="text.primary">Open-source</Typography>{" "}
-        enthusiast.
+        and the <Typography textColor="text.primary">JS/TS/React/Angular/.NET</Typography>{" "}
+        Lover.
       </Typography>
     </Stack>
   );

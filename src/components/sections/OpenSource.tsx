@@ -51,15 +51,15 @@ export default function OpenSource() {
             textAlign: mobile ? "center" : "right",
             ...(mobile
               ? {
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "100%",
-                  alignItems: "center",
-                }
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "100%",
+                alignItems: "center",
+              }
               : {
-                  right: "0",
-                  alignItems: "flex-end",
-                }),
+                right: "0",
+                alignItems: "flex-end",
+              }),
           }}
         >
           <Mobile>
@@ -92,33 +92,33 @@ export default function OpenSource() {
             }}
           >
             <Typography color="success" fontWeight="xl">
-              Open-source.
+              Dustin is
             </Typography>
             {mobile ? <br /> : " "}
-            Join the{" "}
+            {/* Join the{" "} */}
             <Typography
               sx={(theme) => ({
                 ...flickerAnimation,
                 ...(dark
                   ? {
-                      textShadow: `0 0 1px ${theme.palette.text.primary}, 0 0 .5rem ${theme.palette.text.primary}, 0 0 3rem ${theme.palette.text.secondary}`,
-                      color: "white",
-                      animation: "flicker 5s infinite",
-                      animationDelay: `${Math.random() * 2}s`,
-                      fontWeight: "300",
-                    }
+                    textShadow: `0 0 1px ${theme.palette.text.primary}, 0 0 .5rem ${theme.palette.text.primary}, 0 0 3rem ${theme.palette.text.secondary}`,
+                    color: "white",
+                    animation: "flicker 5s infinite",
+                    animationDelay: `${Math.random() * 2}s`,
+                    fontWeight: "300",
+                  }
                   : {
-                      color: theme.palette.text.primary,
-                      fontWeight: "900",
-                      fontFamily: '"Lobster", sans-serif',
-                    }),
+                    color: theme.palette.text.primary,
+                    fontWeight: "900",
+                    fontFamily: '"Lobster", sans-serif',
+                  }),
                 padding: "3rem",
                 margin: "-3rem",
               })}
             >
-              {dark ? "dark side" : "bold side"}
+              {dark ? "Working hard & Passionate" : "Working hard & Passionate"}
             </Typography>{" "}
-            of the force.
+            {/* of the force. */}
             <Default>
               <Avatar
                 color="success"
@@ -143,13 +143,37 @@ export default function OpenSource() {
               maxWidth: "500px",
             }}
           >
-            <Typography textColor="text.primary">Collaboration</Typography> and{" "}
             <Typography textColor="text.primary">
-              community-maintained projects
-            </Typography>{" "}
-            lay the foundation upon which the digital world we live in is built.
-            Any <Typography textColor="text.primary">contribution</Typography>,
-            no matter how small, is and will always be appreciated.
+              Self-disciplined
+            </Typography>{" and "}
+            <Typography textColor="text.primary">
+              Open-communicator
+            </Typography>
+            <br />
+            <br />
+            <Typography textColor="text.primary">
+              Creative
+            </Typography>{" and "}
+            <Typography textColor="text.primary">
+              Innovative
+            </Typography>
+            <br />
+            <br />
+            <Typography textColor="text.primary">
+              Accepting
+            </Typography>{" to "}
+            <Typography textColor="text.primary">
+              Challenges
+            </Typography>
+            <br />
+            <br />
+            <Typography textColor="text.primary">
+              Part of the Team
+            </Typography>
+            {" and "}
+            <Typography textColor="text.primary">
+              Team Culture
+            </Typography>
           </Typography>
         </Stack>
         <Parallax
@@ -160,21 +184,21 @@ export default function OpenSource() {
           style={
             mobile
               ? {
-                  position: "relative",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginTop: "25rem",
-                  zIndex: 1,
-                  animation: "float 20s ease-in-out infinite",
-                }
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "25rem",
+                zIndex: 1,
+                animation: "float 20s ease-in-out infinite",
+              }
               : {
-                  position: "absolute",
-                  right: "calc(350px + 20%)",
-                  top: "2rem",
-                  zIndex: 1,
-                  animation: "float 20s ease-in-out infinite",
-                }
+                position: "absolute",
+                right: "calc(350px + 20%)",
+                top: "2rem",
+                zIndex: 1,
+                animation: "float 20s ease-in-out infinite",
+              }
           }
         >
           <ProgressiveImage
@@ -184,11 +208,11 @@ export default function OpenSource() {
             style={{
               ...(mobile
                 ? {
-                    height: "350px",
-                  }
+                  height: "350px",
+                }
                 : {
-                    height: "500px",
-                  }),
+                  height: "500px",
+                }),
               filter:
                 "drop-shadow(0 -20px 20px hsla(185, 74%, 41%, 0.299)) drop-shadow(0 20px 20px hsla(7, 57%, 51%, 0.364))",
             }}

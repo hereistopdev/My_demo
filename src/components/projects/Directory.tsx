@@ -22,59 +22,11 @@ import {
   Project,
   rank,
 } from "@/assets/Projects";
-import getProjects from "@/utils/Api";
 import moment from "moment";
 import { FiCode, FiFile, FiPlay } from "react-icons/fi";
-import { CiSearch, CiWifiOff } from "react-icons/ci";
 import { useMobileMode, useTabletMode } from "@/components/Responsive";
-import { GoDownload } from "react-icons/go";
 import { useSearchParams } from "react-router-dom";
-
-function Message({
-  children,
-  title,
-  subtitle,
-}: {
-  children: JSX.Element;
-  title: string;
-  subtitle: string;
-}) {
-  const mobile = useMobileMode();
-
-  return (
-    <Stack
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      flexWrap="wrap"
-      gap={mobile ? 3 : 5}
-      padding={mobile ? "2rem 3rem" : 15}
-      sx={
-        mobile
-          ? (theme) => ({
-              background: theme.palette.background.body,
-              width: "100vw",
-              marginX: "-1rem",
-              zIndex: 1,
-            })
-          : undefined
-      }
-    >
-      {children}
-      <Stack
-        direction="column"
-        gap={0.5}
-        maxWidth="25rem"
-        textAlign={mobile ? "center" : "left"}
-      >
-        <Typography level="h3" fontSize="clamp(1.2rem, 5vw, 1.875rem)">
-          {title}
-        </Typography>
-        <Typography level="body2">{subtitle}</Typography>
-      </Stack>
-    </Stack>
-  );
-}
+import { demo_projects } from "../sections/Projects";
 
 function ProjectCard({
   project,
@@ -371,27 +323,11 @@ export default function Directory() {
   );
 
   const [projects, setProjects] = useState([] as Project[]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error>();
 
   const [filteredProjects, setFilteredProjects] = useState([] as Project[]);
 
   useEffect(() => {
-    setLoading(true);
-    getProjects()
-      .then((data) => {
-        setProjects(data || []);
-      })
-      .catch(() => {
-        setError(
-          new Error(
-            "There was an error loading the projects. Please try again later."
-          )
-        );
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    setProjects(demo_projects);
   }, []);
 
   useEffect(() => {
@@ -645,16 +581,7 @@ export default function Directory() {
         </Button>
       </Stack>
       <Stack paddingBlockStart={4}>
-        {loading ? (
-          <Message
-            title="Working on it..."
-            subtitle="We are fetching the projects for you. This should only take a few seconds."
-          >
-            <CircularProgress size="lg" color="neutral" variant="outlined">
-              <GoDownload size="1.5rem" />
-            </CircularProgress>
-          </Message>
-        ) : (
+        {
           filteredProjects
             .sort(
               (a, b) => rank(b, filteredProjects) - rank(a, filteredProjects)
@@ -683,25 +610,7 @@ export default function Directory() {
                 )}
               </React.Fragment>
             ))
-        )}
-        {filteredProjects.length === 0 &&
-          !loading &&
-          debouncedSearch === search && (
-            <Message
-              title={
-                error
-                  ? "This usually never happens..."
-                  : "Well that's embarrassing..."
-              }
-              subtitle={
-                error
-                  ? error.message
-                  : "We couldn't find any projects matching your search criteria. Try a different search term or platform."
-              }
-            >
-              {error ? <CiWifiOff size="5rem" /> : <CiSearch size="5rem" />}
-            </Message>
-          )}
+        }
       </Stack>
     </Stack>
   );
