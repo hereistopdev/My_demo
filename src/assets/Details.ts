@@ -118,7 +118,7 @@ const details = {
     email: "dustlee.dev@gmail.com",
     phone: "+1 430 257 0696",
     website: "https://dustinlee.online/",
-    linkedin: "https://www.linkedin.com/in/dustin-lee-dev",
+    linkedin: "https://www.linkedin.com/in/dustin-daniel-lee-670946384/",
     github: "https://www.github.com/hereistopdev",
     researchgate: "dustinlee",
     gitlab: "https://www.gitlab.com/hereistopdev",
