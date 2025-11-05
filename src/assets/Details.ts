@@ -116,7 +116,7 @@ const details = {
   contact: {
     location: "Asutin, TX, 78735",
     email: "dustlee.dev@gmail.com",
-    phone: "+1 430 257 0696",
+    phone: "+1 430 200 5737",
     website: "https://dustinlee.online/",
     linkedin: "https://www.linkedin.com/in/dustin-daniel-lee-670946384/",
     github: "https://www.github.com/hereistopdev",
