@@ -2,39 +2,37 @@ import {
   Avatar,
   Box,
   Chip,
-  ColorPaletteProp,
   Divider,
   Stack,
   Typography,
 } from "@mui/joy";
 import { useMemo } from "react";
-import { TbBriefcase, TbLanguage, TbSchool } from "react-icons/tb";
+import { TbBriefcase, TbSchool } from "react-icons/tb";
 import details from "@/assets/Details";
 import { Education, Experience } from "@/components/Details";
 import Meta from "@/components/Meta";
 import { useMobileMode } from "@/components/Responsive";
 import { marked } from "marked";
 import Download from "@/components/resume/Download";
-import { GiSkills } from "react-icons/gi";
 import { FaGears } from "react-icons/fa6";
 
 export function Languages() {
-  const color = (level: string): ColorPaletteProp => {
-    switch (level) {
-      case "A1":
-      case "A2":
-      case "B1":
-        return "neutral";
-      case "B2":
-        return "info";
-      case "C1":
-        return "primary";
-      case "C2":
-        return "success";
-      default:
-        return "info";
-    }
-  };
+  // const color = (level: string): ColorPaletteProp => {
+  //   switch (level) {
+  //     case "A1":
+  //     case "A2":
+  //     case "B1":
+  //       return "neutral";
+  //     case "B2":
+  //       return "info";
+  //     case "C1":
+  //       return "primary";
+  //     case "C2":
+  //       return "success";
+  //     default:
+  //       return "info";
+  //   }
+  // };
 
   return (
     <Stack direction="row" flexWrap="wrap" gap={0.5} p={1}>
