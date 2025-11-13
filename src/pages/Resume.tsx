@@ -15,6 +15,8 @@ import Meta from "@/components/Meta";
 import { useMobileMode } from "@/components/Responsive";
 import { marked } from "marked";
 import Download from "@/components/resume/Download";
+import { GiSkills } from "react-icons/gi";
+import { FaGears } from "react-icons/fa6";
 
 export function Languages() {
   const color = (level: string): ColorPaletteProp => {
@@ -35,26 +37,26 @@ export function Languages() {
   };
 
   return (
-    <Stack direction="row" flexWrap="wrap" gap={2} p={1}>
+    <Stack direction="row" flexWrap="wrap" gap={0.5} p={1}>
       {details.languages.map((language) => (
-        <Chip
-          size="lg"
-          key={language.name}
-          color={color(language.level)}
-          variant="outlined"
-          startDecorator={
-            <Avatar
-              alt={language.name}
-              color={color(language.level)}
-              variant="solid"
+        <div>
+          {/* <b>{language.level}</b> */}
+          {language.name.split("|").map((temp)=>
+            <Chip
+              variant="outlined"
+              color="neutral"
               size="sm"
+              key={temp}
+              sx={(theme) => ({
+                borderColor: theme.palette.divider,
+                margin: "0px 3px"
+              })}
             >
-              {language.level}
-            </Avatar>
-          }
-        >
-          {`${language.name}${language.native ? " (native)" : ""}`}
-        </Chip>
+              {temp}
+            </Chip>
+          )}
+          <hr/>
+        </div>
       ))}
     </Stack>
   );
@@ -184,6 +186,33 @@ export default function Resume() {
                   );
                 })}
               </Stack>
+              {/* <Stack gap={1}>
+                <Typography
+                  level="h6"
+                  fontWeight="lg"
+                  startDecorator={
+                    <Avatar size="sm" alt="Languages" sx={{borderRadius: ".5rem", height: "1.75rem", width: "1.75rem"}}>
+                      <TbLanguage />
+                    </Avatar>
+                  }
+                  slotProps={{ startDecorator: { sx:{ marginRight: 1}}}}
+                >
+                  Core Competencies
+                </Typography>
+                <Divider />
+                <Stack gap={1}>
+                  **Backend & Architecture:** .NET 6/7/8 | ASP.NET Core | ASP.NET MVC | Clean Architecture | CQRS | REST APIs | Microservices | SignalR | Entity Framework Core | Razor Pages
+
+**Frontend:** React | Angular | Blazor | Responsive Design | Component Architecture | State Management | Real-time UI
+
+**Cloud & DevOps:** AWS (ECS, Fargate, Lambda) | Docker | Kubernetes | GitLab CI/CD | Azure | CloudWatch | OpenTelemetry | Observability
+
+**Data & Patterns:** SQL Server | Entity Framework | LINQ | Repository Pattern | Caching Strategies | Performance Optimization
+
+**Languages:** C# (Expert) | TypeScript/JavaScript | SQL 
+                </Stack>
+              </Stack> */}
+
               <Stack gap={1}>
                 <Typography
                   level="h6"
@@ -220,7 +249,7 @@ export default function Resume() {
                 </Stack>
               </Stack>
 
-              <Stack gap={1}>
+              {/* <Stack gap={1}>
                 <Typography
                   level="h6"
                   fontWeight="lg"
@@ -237,7 +266,26 @@ export default function Resume() {
                 <Stack gap={1}>
                   <Languages />
                 </Stack>
+              </Stack> */}
+              <Stack gap={1}>
+                <Typography
+                  level="h6"
+                  fontWeight="lg"
+                  startDecorator={
+                    <Avatar size="sm" alt="Languages" sx={{borderRadius: ".5rem", height: "1.75rem", width: "1.75rem"}}>
+                      <FaGears />
+                    </Avatar>
+                  }
+                  slotProps={{ startDecorator: { sx:{ marginRight: 1}}}}
+                >
+                  Skills
+                </Typography>
+                <Divider />
+                <Stack gap={1}>
+                  <Languages />
+                </Stack>
               </Stack>
+
             </Box>
           </Stack>
         </Box>
