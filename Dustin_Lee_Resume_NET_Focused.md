@@ -3,7 +3,7 @@
 
 **Location:** Austin, TX, 78735  
 **Email:** dustlee.dev@gmail.com  
-**Phone:** +1 430 200 5737  
+**Phone:** +1 (430) 901-5970  
 **Website:** https://dustinlee.online/
 
 ---
